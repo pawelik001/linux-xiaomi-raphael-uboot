@@ -41,9 +41,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 # 配置清华镜像源
 cat > rootdir/etc/apt/sources.list << 'EOF'
-deb http://ftp.agh.edu.pl/ubuntu-ports/ noble main restricted universe multiverse
-deb http://ftp.agh.edu.pl/ubuntu-ports/ noble-updates main restricted universe multiverse
-deb http://ftp.agh.edu.pl/ubuntu-ports/ noble-backports main restricted universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports/ noble main restricted universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports/ noble-updates main restricted universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports/ noble-backports main restricted universe multiverse
 deb http://ports.ubuntu.com/ubuntu-ports/ noble-security main restricted universe multiverse
 EOF
 
