@@ -55,8 +55,8 @@ chroot rootdir apt upgrade -y
 chroot rootdir apt install -y bash-completion sudo apt-utils ssh openssh-server nano network-manager systemd-boot initramfs-tools chrony curl wget locales tzdata language-pack-zh-hans dnsmasq iptables iproute2
 
 # 设置时区和语言
-echo "Asia/Shanghai" > rootdir/etc/timezone
-chroot rootdir ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+echo "Europe/Warsaw" > rootdir/etc/timezone
+chroot rootdir ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 chroot rootdir locale-gen en_US.UTF-8
 chroot rootdir update-locale LANG=en_US.UTF-8
 
@@ -68,7 +68,6 @@ if [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
     export LC_ALL=en_US.UTF-8
 fi
 EOF
-chmod +x rootdir/etc/profile.d/99-locale-fix.sh
 
 # 安装设备特定软件包
 chroot rootdir apt install -y rmtfs protection-domain-mapper tqftpserv
