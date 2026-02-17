@@ -41,9 +41,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 # 配置清华镜像源
 cat > rootdir/etc/apt/sources.list << 'EOF'
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ noble main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ noble-updates main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ noble-backports main restricted universe multiverse
+deb http://ftp.agh.edu.pl/ubuntu-ports/ noble main restricted universe multiverse
+deb http://ftp.agh.edu.pl/ubuntu-ports/ noble-updates main restricted universe multiverse
+deb http://ftp.agh.edu.pl/ubuntu-ports/ noble-backports main restricted universe multiverse
 deb http://ports.ubuntu.com/ubuntu-ports/ noble-security main restricted universe multiverse
 EOF
 
@@ -57,15 +57,15 @@ chroot rootdir apt install -y bash-completion sudo apt-utils ssh openssh-server 
 # 设置时区和语言
 echo "Asia/Shanghai" > rootdir/etc/timezone
 chroot rootdir ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-chroot rootdir locale-gen en_US.UTF-8 zh_CN.UTF-8
+chroot rootdir locale-gen en_US.UTF-8
 chroot rootdir update-locale LANG=en_US.UTF-8
 
 # 配置动态语言切换（SSH使用中文，TTY使用英文）
 cat > rootdir/etc/profile.d/99-locale-fix.sh << 'EOF'
 # 如果是SSH连接，则使用中文
 if [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_TTY" ]; then
-    export LANG=zh_CN.UTF-8
-    export LC_ALL=zh_CN.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
 fi
 EOF
 chmod +x rootdir/etc/profile.d/99-locale-fix.sh
